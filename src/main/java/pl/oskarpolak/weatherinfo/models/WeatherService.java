@@ -8,7 +8,7 @@ import pl.oskarpolak.weatherinfo.models.weather.WeatherModel;
 @Service
 public class WeatherService {
 
-     @Value("${openweathermap.api_key}")
+     @Value("${openweathermap.api_key}") //Odwołanie do pliku application.prop
      private String apiKey;
      private RestTemplate restTemplate;
 
@@ -16,7 +16,7 @@ public class WeatherService {
         restTemplate = new RestTemplate();
     }
 
-    public WeatherModel /* todo zamienić na odpowiedni model danych */ makeCall(String city){
+    public WeatherModel makeCall(String city){
         return restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey, WeatherModel.class);
     }
 }
